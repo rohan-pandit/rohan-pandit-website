@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohan Pandit</title>
+  <meta name="description" content="Personal and professional website of Rohan Pandit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="#top" class="logo">Rohan Pandit</a>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about" data-nav>About</a></li>
+          <li><a href="#projects" data-nav>Projects</a></li>
+          <li><a href="#personal" data-nav>Personal</a></li>
+          <li><a href="#contact" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="container about-grid reveal">
+        <div class="about-photo">
+          <img class="about-portrait" src="assets/headshot.jpg" alt="Rohan Pandit">
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">Hi, I'm</p>
+          <h1>Rohan Pandit</h1>
+		  <h3>Product Manager</h3>
+          <p class="lede">
+            Placeholder tagline — e.g. "Software engineer building things at the
+            intersection of X and Y." Swap this out for your real one-liner.
+          </p>
+          <p class="body-text">
+            This is placeholder bio copy. A few sentences about your background,
+            what you currently do, what you care about professionally, and what
+            makes your approach distinct. Keep it to a short paragraph or two —
+            this section should be scannable, not a full resume.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">See my work</a>
+            <a class="btn btn-ghost" href="/resume.pdf">Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects &amp; Case Studies</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div class="project-thumb" aria-hidden="true">01</div>
+            <div class="project-body">
+              <h3>Project One</h3>
+              <p class="project-tags">React · Node.js · Postgres</p>
+              <p>
+                Placeholder description of the problem, your role, and the outcome.
+                One or two sentences is plenty — save detail for the case study link.
+              </p>
+              <button type="button" class="project-link" data-modal-target="project-1">View case study →</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-thumb" aria-hidden="true">02</div>
+            <div class="project-body">
+              <h3>Project Two</h3>
+              <p class="project-tags">Python · ML · AWS</p>
+              <p>
+                Placeholder description. What did you build, why did it matter,
+                and what was the measurable result or learning?
+              </p>
+              <button type="button" class="project-link" data-modal-target="project-2">View case study →</button>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-thumb" aria-hidden="true">03</div>
+            <div class="project-body">
+              <h3>Project Three</h3>
+              <p class="project-tags">TypeScript · Design</p>
+              <p>
+                Placeholder description. Swap in a real project, a side project,
+                or a case study from your work — whatever best shows your range.
+              </p>
+              <button type="button" class="project-link" data-modal-target="project-3">View case study →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY CONTENT (hidden templates, shown in modal on click) -->
+    <template id="modal-project-1">
+      <p class="eyebrow">React · Node.js · Postgres</p>
+      <h3>Project One</h3>
+      <div class="modal-gallery">
+        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
+        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
+      </div>
+      <p>
+        Placeholder overview — what the project was, who it was for, and what problem
+        it solved. Two or three sentences is plenty.
+      </p>
+      <p>Placeholder detail on your role and approach. What you built and why.</p>
+      <ul class="check-list">
+        <li>Placeholder outcome or result, ideally with a number.</li>
+        <li>Placeholder — a second concrete result or learning.</li>
+        <li>Placeholder — tools, scale, or timeline detail.</li>
+      </ul>
+    </template>
+
+    <template id="modal-project-2">
+      <p class="eyebrow">Python · ML · AWS</p>
+      <h3>Project Two</h3>
+      <div class="modal-gallery">
+        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
+        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
+      </div>
+      <p>
+        Placeholder overview — what the project was, who it was for, and what problem
+        it solved. Two or three sentences is plenty.
+      </p>
+      <p>Placeholder detail on your role and approach. What you built and why.</p>
+      <ul class="check-list">
+        <li>Placeholder outcome or result, ideally with a number.</li>
+        <li>Placeholder — a second concrete result or learning.</li>
+        <li>Placeholder — tools, scale, or timeline detail.</li>
+      </ul>
+    </template>
+
+    <template id="modal-project-3">
+      <p class="eyebrow">TypeScript · Design</p>
+      <h3>Project Three</h3>
+      <div class="modal-gallery">
+        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
+        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
+      </div>
+      <p>
+        Placeholder overview — what the project was, who it was for, and what problem
+        it solved. Two or three sentences is plenty.
+      </p>
+      <p>Placeholder detail on your role and approach. What you built and why.</p>
+      <ul class="check-list">
+        <li>Placeholder outcome or result, ideally with a number.</li>
+        <li>Placeholder — a second concrete result or learning.</li>
+        <li>Placeholder — tools, scale, or timeline detail.</li>
+      </ul>
+    </template>
+
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <button type="button" class="modal-close" id="modalClose" aria-label="Close case study">&times;</button>
+        <div class="modal-content" id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- PERSONAL -->
+    <section id="personal" class="section personal">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Off the clock</p>
+          <h2>Personal</h2>
+        </div>
+
+        <div class="personal-rows">
+          <div class="personal-row reveal">
+            <img class="personal-photo" src="assets/tennis.jpg" alt="Playing tennis">
+            <div class="personal-copy">
+              <h3>All things tennis!</h3>
+              <p>Obsessed with watching, playing, and talking about tennis.</p>
+            </div>
+          </div>
+          <div class="personal-row reveal">
+            <img class="personal-photo" src="assets/cooking.jpg" alt="Cooking in the kitchen">
+            <div class="personal-copy">
+              <h3>Cooking</h3>
+              <p>From learning my grandmother's recipes, to making multi-cultural fusion food - I like to wind down in the kitchen.</p>
+            </div>
+          </div>
+          <div class="personal-row reveal">
+            <img class="personal-photo" src="assets/mocha.jpg" alt="My dog Mocha">
+            <div class="personal-copy">
+              <h3>My pup, Mocha</h3>
+              <p>Relaxing on the couch with my dog, Mocha, is always a great way to stay present.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="container reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Let's talk</h2>
+        <p class="body-text contact-lede">
+          Placeholder contact copy — e.g. "Open to new opportunities and
+          interesting conversations. Reach out anytime."
+        </p>
+        <!--<a class="contact-email" href="mailto:hello@example.com">hello@example.com</a>-->
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/rohan-pandit-bb2828a7" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+		  <a href="mailto:rohan.pandit14@gmail.com" aria-label="Contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Rohan Pandit.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
