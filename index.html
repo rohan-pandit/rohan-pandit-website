@@ -21,7 +21,7 @@
         </button>
         <ul class="nav-links" id="navLinks">
           <li><a href="#about" data-nav>About</a></li>
-          <li><a href="#projects" data-nav>Projects</a></li>
+          <li><a href="#projects" data-nav>Case Studies</a></li>
           <li><a href="#personal" data-nav>Personal</a></li>
           <li><a href="#contact" data-nav>Contact</a></li>
         </ul>
@@ -38,33 +38,37 @@
           <img class="about-portrait" src="assets/headshot.jpg" alt="Rohan Pandit">
         </div>
         <div class="about-copy">
-          <p class="eyebrow">Hi, I'm</p>
-          <h1>Rohan Pandit</h1>
-		  <h3>Product Manager</h3>
+          <!--<p class="eyebrow">Hi, I'm</p>-->
+		  <p class="eyebrow"> Product Manager</p>
+          <h1>Hi, I'm Rohan Pandit</h1>
+		  <!--<h3>Product Manager</h3>-->
           <p class="lede">
-            Placeholder tagline — e.g. "Software engineer building things at the
-            intersection of X and Y." Swap this out for your real one-liner.
+            Product strategist and engineer at core, <i>building the bridge between complex systems and the people who rely on them</i>.
           </p>
           <p class="body-text">
-            This is placeholder bio copy. A few sentences about your background,
-            what you currently do, what you care about professionally, and what
-            makes your approach distinct. Keep it to a short paragraph or two —
-            this section should be scannable, not a full resume.
+           I love to build. I started as an application developer before moving into product, 
+		   an engineering foundation that still shapes how I think about systems, not just a roadmap. 
+		   Since then, I've led product builds across fintech, healthcare, and ecommerce for millions of consumers.</p>
+		   <p class="body-text">
+Most recently, I've applied that same drive to AI: 
+shipping agentic systems with tool-calling, multi-agent orchestration, RAG pipelines, and guardrails/evals, because I wanted to prove I could build it, not just talk about it.</p>
+			<p class="body-text">
+The problems I find most exciting are the ones without a playbook yet — new technology, real consequences, and not a clear consensus on the right move.
           </p>
           <div class="specialties">
             <p class="eyebrow">Specialties</p>
             <ul class="specialty-tags">
-              <li>AI product development</li>
+              <li>Agentic AI development</li>
               <li>Fintech &amp; regulated environments</li>
-              <li>Zero-to-one launches</li>
+              <li>0 to 1 &amp; 1 to n</li>
               <li>Platform modernization</li>
-              <li>Growth &amp; conversion</li>
-              <li>Eval &amp; measurement</li>
+              <li>Consumer experience</li>
+              <li>Utilization &amp; engagement</li>
             </ul>
           </div>
           <div class="cta-row">
             <a class="btn btn-primary" href="#projects">See my work</a>
-            <a class="btn btn-ghost" href="/resume.pdf">Resume</a>
+            <!--<a class="btn btn-ghost" href="/resume.pdf">Resume</a>-->
           </div>
         </div>
       </div>
@@ -75,14 +79,14 @@
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">Selected work</p>
-          <h2>Projects &amp; Case Studies</h2>
+          <h2>Case Studies</h2>
         </div>
 
         <div class="project-grid">
           <article class="project-card reveal">
             <div class="project-thumb" aria-hidden="true">01</div>
             <div class="project-body">
-              <h3>Project One</h3>
+              <h3>Platform modernization &amp; stacked benefits experience</h3>
               <p class="project-tags">React · Node.js · Postgres</p>
               <p>
                 Placeholder description of the problem, your role, and the outcome.
@@ -95,7 +99,7 @@
           <article class="project-card reveal">
             <div class="project-thumb" aria-hidden="true">02</div>
             <div class="project-body">
-              <h3>Project Two</h3>
+              <h3>Shop - supplemental benefits ecommerce experience</h3>
               <p class="project-tags">Python · ML · AWS</p>
               <p>
                 Placeholder description. What did you build, why did it matter,
@@ -108,7 +112,7 @@
           <article class="project-card reveal">
             <div class="project-thumb" aria-hidden="true">03</div>
             <div class="project-body">
-              <h3>Project Three</h3>
+              <h3>Agentic AI Project</h3>
               <p class="project-tags">TypeScript · Design</p>
               <p>
                 Placeholder description. Swap in a real project, a side project,
@@ -124,16 +128,18 @@
     <!-- CASE STUDY CONTENT (hidden templates, shown in modal on click) -->
     <template id="modal-project-1">
       <p class="eyebrow">React · Node.js · Postgres</p>
-      <h3>Project One</h3>
+      <h3>Benefits platform modernization and stacked benefits experience</h3>
       <div class="modal-gallery">
         <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
         <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
       </div>
       <p>
-        Placeholder overview — what the project was, who it was for, and what problem
-        it solved. Two or three sentences is plenty.
+      Users don't understand how their benefits work, what's covered, or how to manage a claim, leading to friction and low utilization: 
+	  ~42% left money unspent at year-end (~$380 on average), ~15% of claims got stuck in substantiation, and ~25% triggered a support call, putting contract renewals at risk. 
+	  Using user research and call data, I wrote the product brief covering strategy, data flow, and architecture for modernizing the experience and consolidating platforms that unlocked a new distribution channel, generating 3 new clients, $1.5M in AUM growth, and 6,000 new users. 
+	  Claims stuck in substantiation dropped to 8% and call volume fell 10%.
       </p>
-      <p>Placeholder detail on your role and approach. What you built and why.</p>
+	  <p>Placeholder detail on your role and approach. What you built and why.</p>
       <ul class="check-list">
         <li>Placeholder outcome or result, ideally with a number.</li>
         <li>Placeholder — a second concrete result or learning.</li>
@@ -143,15 +149,17 @@
 
     <template id="modal-project-2">
       <p class="eyebrow">Python · ML · AWS</p>
-      <h3>Project Two</h3>
+      <h3>Shop</h3>
       <div class="modal-gallery">
         <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
         <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
       </div>
       <p>
-        Placeholder overview — what the project was, who it was for, and what problem
-        it solved. Two or three sentences is plenty.
-      </p>
+	  Users have difficulty utilizing their supplemental benefits such as OTC medication and food funds. 
+	  Most are older, have low tech literacy, and face digital and physical accessibility barriers. 
+	  Lower utilization puts contract renewals at risk and can lead to reduced client funding. 
+	  Utilizing UX research insights, I led the discovery and build of new online shopping experience integrated with Amazon and Walmart fulfillment and increased benefit utilization by 20%. 
+	  Through a structured migration, this product is the go forward experience for over 10 million users.</p>
       <p>Placeholder detail on your role and approach. What you built and why.</p>
       <ul class="check-list">
         <li>Placeholder outcome or result, ideally with a number.</li>
@@ -162,7 +170,7 @@
 
     <template id="modal-project-3">
       <p class="eyebrow">TypeScript · Design</p>
-      <h3>Project Three</h3>
+      <h3>Agentic AI Project</h3>
       <div class="modal-gallery">
         <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
         <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
@@ -226,8 +234,8 @@
         <p class="eyebrow">Get in touch</p>
         <h2>Let's talk</h2>
         <p class="body-text contact-lede">
-          Placeholder contact copy — e.g. "Open to new opportunities and
-          interesting conversations. Reach out anytime."
+          Open to new opportunities and
+          interesting conversations. Reach out anytime.
         </p>
         <!--<a class="contact-email" href="mailto:hello@example.com">hello@example.com</a>-->
         <div class="social-row">
