@@ -84,40 +84,35 @@ The problems I find most exciting are the ones without a playbook yet — new te
 
         <div class="project-grid">
           <article class="project-card reveal">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/benefits-platform-home.jpg" alt="" loading="lazy" style="object-position: center 17%;"></div>
+            <div class="project-thumb thumb-green" aria-hidden="true">
+              <div class="device-phone"><img src="assets/benefits-platform-home.jpg" alt="" loading="lazy"></div>
+            </div>
             <div class="project-body">
               <h3>Platform modernization &amp; stacked benefits experience</h3>
               <p class="project-tags">React · Node.js · Postgres</p>
-              <p>
-                Placeholder description of the problem, your role, and the outcome.
-                One or two sentences is plenty — save detail for the case study link.
-              </p>
+              <p>~42% of users left money unspent. Consolidated platforms and unlocked a new channel: 3 clients, $1.5M AUM.</p>
               <button type="button" class="project-link" data-modal-target="project-1">View case study →</button>
             </div>
           </article>
 
           <article class="project-card reveal">
-            <div class="project-thumb" aria-hidden="true">02</div>
+            <div class="project-thumb thumb-blue" aria-hidden="true">02</div>
             <div class="project-body">
               <h3>Shop - supplemental benefits ecommerce experience</h3>
               <p class="project-tags">Python · ML · AWS</p>
-              <p>
-                Placeholder description. What did you build, why did it matter,
-                and what was the measurable result or learning?
-              </p>
+              <p>Amazon + Walmart fulfillment for OTC and food benefits. +20% utilization, 10M users.</p>
               <button type="button" class="project-link" data-modal-target="project-2">View case study →</button>
             </div>
           </article>
 
           <article class="project-card reveal">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/agentic-ai-landing.png" alt="" loading="lazy"></div>
+            <div class="project-thumb thumb-sand" aria-hidden="true">
+              <div class="device-browser"><img src="assets/agentic-ai-landing.png" alt="" loading="lazy"></div>
+            </div>
             <div class="project-body">
               <h3>Agentic AI Project</h3>
               <p class="project-tags">TypeScript · Design</p>
-              <p>
-                Placeholder description. Swap in a real project, a side project,
-                or a case study from your work — whatever best shows your range.
-              </p>
+              <p>A travel-planning concierge that helps you plan and book your dream trip.</p>
               <button type="button" class="project-link" data-modal-target="project-3">View case study →</button>
             </div>
           </article>
@@ -125,71 +120,110 @@ The problems I find most exciting are the ones without a playbook yet — new te
       </div>
     </section>
 
-    <!-- CASE STUDY CONTENT (hidden templates, shown in modal on click) -->
-    <template id="modal-project-1">
-      <p class="eyebrow">React · Node.js · Postgres</p>
-      <h3>Benefits platform modernization and stacked benefits experience</h3>
-      <div class="modal-gallery">
-        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
-        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
+    <!-- CASE STUDY CONTENT (hidden templates, shown in modal on click)
+         data-tags fills the modal's top bar; data-short is the name used in "Next: … →".
+         Screenshots: wrap phone shots in .device-phone and desktop shots in .device-browser
+         (add class="wide" to that figure). Add as many figures as you like. -->
+    <template id="modal-project-1" data-tags="React · Node.js · Postgres" data-short="Benefits">
+      <header class="cs-hero">
+        <h3 id="modalTitle">Benefits platform modernization and stacked benefits experience</h3>
+        <div class="cs-stats">
+          <div><strong>3</strong><span>new clients</span></div>
+          <div><strong>$1.5M</strong><span>AUM growth</span></div>
+          <div><strong>15→8%</strong><span>claims stuck</span></div>
+        </div>
+      </header>
+      <div class="cs-layout">
+        <div class="cs-text">
+          <p>
+            Users don't understand how their benefits work, what's covered, or how to manage a claim, leading to friction and low utilization:
+            ~42% left money unspent at year-end (~$380 on average), ~15% of claims got stuck in substantiation, and ~25% triggered a support call, putting contract renewals at risk.
+            Using user research and call data, I wrote the product brief covering strategy, data flow, and architecture for modernizing the experience and consolidating platforms that unlocked a new distribution channel, generating 3 new clients, $1.5M in AUM growth, and 6,000 new users.
+            Claims stuck in substantiation dropped to 8% and call volume fell 10%.
+          </p>
+          <p>Placeholder detail on your role and approach. What you built and why.</p>
+          <ul class="check-list">
+            <li>Placeholder outcome or result, ideally with a number.</li>
+            <li>Placeholder — a second concrete result or learning.</li>
+            <li>Placeholder — tools, scale, or timeline detail.</li>
+          </ul>
+        </div>
+        <aside class="cs-shots" aria-label="Screenshots">
+          <figure>
+            <div class="device-phone"><img src="assets/benefits-platform-home.jpg" alt="Benefits app home screen" loading="lazy"></div>
+            <figcaption>Mobile · home</figcaption>
+          </figure>
+        </aside>
       </div>
-      <p>
-      Users don't understand how their benefits work, what's covered, or how to manage a claim, leading to friction and low utilization: 
-	  ~42% left money unspent at year-end (~$380 on average), ~15% of claims got stuck in substantiation, and ~25% triggered a support call, putting contract renewals at risk. 
-	  Using user research and call data, I wrote the product brief covering strategy, data flow, and architecture for modernizing the experience and consolidating platforms that unlocked a new distribution channel, generating 3 new clients, $1.5M in AUM growth, and 6,000 new users. 
-	  Claims stuck in substantiation dropped to 8% and call volume fell 10%.
-      </p>
-	  <p>Placeholder detail on your role and approach. What you built and why.</p>
-      <ul class="check-list">
-        <li>Placeholder outcome or result, ideally with a number.</li>
-        <li>Placeholder — a second concrete result or learning.</li>
-        <li>Placeholder — tools, scale, or timeline detail.</li>
-      </ul>
     </template>
 
-    <template id="modal-project-2">
-      <p class="eyebrow">Python · ML · AWS</p>
-      <h3>Shop</h3>
-      <div class="modal-gallery">
-        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
-        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
+    <template id="modal-project-2" data-tags="Python · ML · AWS" data-short="Shop">
+      <header class="cs-hero">
+        <h3 id="modalTitle">Shop</h3>
+        <div class="cs-stats">
+          <div><strong>+20%</strong><span>benefit utilization</span></div>
+          <div><strong>10M+</strong><span>users</span></div>
+        </div>
+      </header>
+      <div class="cs-layout">
+        <div class="cs-text">
+          <p>
+            Users have difficulty utilizing their supplemental benefits such as OTC medication and food funds.
+            Most are older, have low tech literacy, and face digital and physical accessibility barriers.
+            Lower utilization puts contract renewals at risk and can lead to reduced client funding.
+            Utilizing UX research insights, I led the discovery and build of new online shopping experience integrated with Amazon and Walmart fulfillment and increased benefit utilization by 20%.
+            Through a structured migration, this product is the go forward experience for over 10 million users.
+          </p>
+          <p>Placeholder detail on your role and approach. What you built and why.</p>
+          <ul class="check-list">
+            <li>Placeholder outcome or result, ideally with a number.</li>
+            <li>Placeholder — a second concrete result or learning.</li>
+            <li>Placeholder — tools, scale, or timeline detail.</li>
+          </ul>
+        </div>
+        <aside class="cs-shots" aria-label="Screenshots">
+          <figure>
+            <div class="shot-placeholder" aria-hidden="true">Add screenshot</div>
+          </figure>
+        </aside>
       </div>
-      <p>
-	  Users have difficulty utilizing their supplemental benefits such as OTC medication and food funds. 
-	  Most are older, have low tech literacy, and face digital and physical accessibility barriers. 
-	  Lower utilization puts contract renewals at risk and can lead to reduced client funding. 
-	  Utilizing UX research insights, I led the discovery and build of new online shopping experience integrated with Amazon and Walmart fulfillment and increased benefit utilization by 20%. 
-	  Through a structured migration, this product is the go forward experience for over 10 million users.</p>
-      <p>Placeholder detail on your role and approach. What you built and why.</p>
-      <ul class="check-list">
-        <li>Placeholder outcome or result, ideally with a number.</li>
-        <li>Placeholder — a second concrete result or learning.</li>
-        <li>Placeholder — tools, scale, or timeline detail.</li>
-      </ul>
     </template>
 
-    <template id="modal-project-3">
-      <p class="eyebrow">TypeScript · Design</p>
-      <h3>Agentic AI Project</h3>
-      <div class="modal-gallery">
-        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 1</div>
-        <div class="modal-image is-placeholder" aria-hidden="true">Add screenshot 2</div>
+    <template id="modal-project-3" data-tags="TypeScript · Design" data-short="Agentic AI">
+      <header class="cs-hero">
+        <h3 id="modalTitle">Agentic AI Project</h3>
+      </header>
+      <div class="cs-layout">
+        <div class="cs-text">
+          <p>
+            Placeholder overview — what the project was, who it was for, and what problem
+            it solved. Two or three sentences is plenty.
+          </p>
+          <p>Placeholder detail on your role and approach. What you built and why.</p>
+          <ul class="check-list">
+            <li>Placeholder outcome or result, ideally with a number.</li>
+            <li>Placeholder — a second concrete result or learning.</li>
+            <li>Placeholder — tools, scale, or timeline detail.</li>
+          </ul>
+        </div>
+        <aside class="cs-shots" aria-label="Screenshots">
+          <figure class="wide">
+            <div class="device-browser"><img src="assets/agentic-ai-landing.png" alt="Wanderwise landing page" loading="lazy"></div>
+            <figcaption>Desktop · landing</figcaption>
+          </figure>
+        </aside>
       </div>
-      <p>
-        Placeholder overview — what the project was, who it was for, and what problem
-        it solved. Two or three sentences is plenty.
-      </p>
-      <p>Placeholder detail on your role and approach. What you built and why.</p>
-      <ul class="check-list">
-        <li>Placeholder outcome or result, ideally with a number.</li>
-        <li>Placeholder — a second concrete result or learning.</li>
-        <li>Placeholder — tools, scale, or timeline detail.</li>
-      </ul>
     </template>
 
     <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-        <button type="button" class="modal-close" id="modalClose" aria-label="Close case study">&times;</button>
+        <div class="modal-bar">
+          <p class="eyebrow" id="modalTags"></p>
+          <div class="modal-bar-actions">
+            <button type="button" class="modal-next" id="modalNext"></button>
+            <button type="button" class="modal-close" id="modalClose" aria-label="Close case study">&times;</button>
+          </div>
+        </div>
         <div class="modal-content" id="modalContent"></div>
       </div>
     </div>

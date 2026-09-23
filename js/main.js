@@ -61,7 +61,11 @@ sections.forEach((section) => spyObserver.observe(section));
 const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 const modalClose = document.getElementById('modalClose');
+const modalTags = document.getElementById('modalTags');
+const modalNext = document.getElementById('modalNext');
 const modalBox = modalOverlay.querySelector('.modal');
+const projectIds = [...document.querySelectorAll('.project-card [data-modal-target]')]
+  .map((trigger) => trigger.getAttribute('data-modal-target'));
 let lastTrigger = null;
 
 function openModal(targetId, trigger) {
@@ -70,13 +74,37 @@ function openModal(targetId, trigger) {
 
   modalContent.innerHTML = '';
   modalContent.appendChild(template.content.cloneNode(true));
+  modalTags.textContent = template.dataset.tags || '';
 
-  lastTrigger = trigger;
+  // Hint that screenshots scroll sideways on mobile (hidden by CSS on larger screens)
+  const shots = modalContent.querySelector('.cs-shots');
+  if (shots && shots.querySelectorAll('figure').length > 1) {
+    const hint = document.createElement('p');
+    hint.className = 'swipe-hint';
+    hint.textContent = 'Swipe for more screenshots →';
+    shots.after(hint);
+  }
+
+  // "Next" cycles through the case studies in card order
+  const nextId = projectIds[(projectIds.indexOf(targetId) + 1) % projectIds.length];
+  const nextTemplate = document.getElementById(`modal-${nextId}`);
+  modalNext.hidden = projectIds.length < 2 || !nextTemplate;
+  if (nextTemplate) {
+    modalNext.textContent = `Next: ${nextTemplate.dataset.short || 'case study'} →`;
+    modalNext.dataset.target = nextId;
+  }
+
+  if (trigger) lastTrigger = trigger;
+  modalBox.scrollTop = 0;
   modalOverlay.classList.add('is-open');
   modalOverlay.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
   modalBox.focus();
 }
+
+modalNext.addEventListener('click', () => {
+  openModal(modalNext.dataset.target);
+});
 
 function closeModal() {
   modalOverlay.classList.remove('is-open');
