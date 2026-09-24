@@ -441,6 +441,19 @@ a { color: inherit; }
   max-width: 600px;
 }
 
+/* Drawn arrow for a directional stat, sized to match the numbers beside it */
+.stat-arrow {
+  display: block;
+  height: 0.85em; /* about the digits' height; margins keep the line as tall as the other stats */
+  width: auto;
+  margin: 0.2em 0 0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .cs-cta {
   display: flex;
   flex-wrap: wrap;
@@ -792,30 +805,17 @@ body.modal-open { overflow: hidden; }
 /* ---------- Personal ---------- */
 .personal { background: var(--bg-alt); }
 
+/* Three cards side by side, echoing the case study cards above */
 .personal-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
 }
 
 .personal-row {
-  display: grid;
-  grid-template-columns: minmax(220px, 420px) 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.personal-row:nth-child(even) {
-  grid-template-columns: 1fr minmax(220px, 420px);
-}
-
-.personal-row:nth-child(even) .personal-photo {
-  order: 2;
-}
-
-.personal-row + .personal-row {
-  border-top: 1px solid var(--border);
-  padding-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .personal-photo {
@@ -828,38 +828,12 @@ body.modal-open { overflow: hidden; }
   display: block;
 }
 
-
-.personal-photo.is-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--card-bg);
-  border: 1px dashed var(--border);
-  color: var(--ink-soft);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-align: center;
-  padding: 12px;
-  box-shadow: none;
-}
-
 .personal-copy h3 { font-size: 1.15rem; margin-bottom: 0.4em; }
 .personal-copy p { font-size: 0.98rem; }
 
 @media (max-width: 760px) {
-  .personal-row,
-  .personal-row:nth-child(even) {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .personal-photo,
-  .personal-row:nth-child(even) .personal-photo {
-    order: 0;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-  }
+  .personal-rows { grid-template-columns: 1fr; gap: 40px; }
+  .personal-row { max-width: 460px; width: 100%; margin: 0 auto; }
 }
 
 /* ---------- Contact ---------- */
@@ -877,20 +851,16 @@ body.modal-open { overflow: hidden; }
   margin: 12px 0 32px;
 }
 
-.social-row {
+.contact-actions {
   display: flex;
-  gap: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
   justify-content: center;
+  margin-top: 8px;
 }
 
-.social-row a {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-
-.social-row a:hover { color: var(--accent); }
+.contact-actions .btn-ghost { background: var(--card-bg); }
+.contact-actions .btn-ghost:hover { border-color: var(--accent); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -931,6 +901,7 @@ body.modal-open { overflow: hidden; }
     justify-items: center;
   }
 
+  .about-copy .body-text { text-align: left; } /* long paragraphs read better left-aligned */
   .cta-row { justify-content: center; }
   .specialty-tags { justify-content: center; }
 

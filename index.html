@@ -3,12 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rohan Pandit</title>
-  <meta name="description" content="Personal and professional website of Rohan Pandit.">
+  <title>Rohan Pandit · Product Manager</title>
+  <meta name="description" content="Product manager with an engineering background, building consumer fintech, healthcare, and agentic AI products.">
+  <!-- Link previews (LinkedIn, Slack, iMessage, etc.). Image URLs must be absolute. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rohanpandit.io/">
+  <meta property="og:title" content="Rohan Pandit · Product Manager">
+  <meta property="og:description" content="Product manager with an engineering background, building consumer fintech, healthcare, and agentic AI products.">
+  <meta property="og:image" content="https://rohanpandit.io/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rohan Pandit, Product Manager: fintech, healthcare, and agentic AI">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -43,12 +56,12 @@
           <h1>Hi, I'm Rohan Pandit</h1>
 		  <!--<h3>Product Manager</h3>-->
           <p class="lede">
-            Product strategist and engineer at core, <i>building the bridge between complex systems and the people who rely on them</i>.
+            Product strategist and engineer at heart, <i>building the bridge between complex systems and the people who rely on them</i>.
           </p>
           <p class="body-text">
            I love to build. I started as an application developer before moving into product, 
 		   an engineering foundation that still shapes how I think about systems, not just a roadmap. 
-		   Since then, I've led product builds across fintech, healthcare, and ecommerce for millions of consumers.</p>
+		   In 8+ years at Optum Financial, Starship, and Engine Room, I've led product builds across fintech, healthcare, and ecommerce for millions of consumers.</p>
 		   <p class="body-text">
 Most recently, I've applied that same drive to AI: 
 shipping agentic systems with tool-calling, multi-agent orchestration, RAG pipelines, and guardrails/evals, because I wanted to prove I could build it, not just talk about it.</p>
@@ -113,7 +126,7 @@ The problems I find most exciting are the ones without a playbook yet — new te
             </div>
             <div class="project-body">
               <h3>Wanderwise</h3>
-              <p class="project-tags">Agentic AI · Travel Platform</p>
+              <p class="project-tags">Agentic AI · Travel platform</p>
               <p>A travel-planning concierge that helps you plan your dream trip.</p>
               <button type="button" class="project-link" data-modal-target="project-3">View case study →</button>
             </div>
@@ -132,7 +145,7 @@ The problems I find most exciting are the ones without a playbook yet — new te
         <div class="cs-stats">
           <div><strong>3</strong><span>new clients</span></div>
           <div><strong>$1.5M</strong><span>AUM growth</span></div>
-          <div><strong aria-label="Down">↓</strong><span>call volume<br>stuck claims</span></div>
+          <div><strong><svg class="stat-arrow" viewBox="0 0 20 24" role="img" aria-label="Down"><path d="M10 2v18M3 13l7 7 7-7"/></svg></strong><span>call volume<br>stuck claims</span></div>
         </div>
       </header>
       <div class="cs-layout">
@@ -206,7 +219,7 @@ The problems I find most exciting are the ones without a playbook yet — new te
       </div>
     </template>
 
-    <template id="modal-project-3" data-tags="Agentic AI · Travel Platform" data-short="Wanderwise">
+    <template id="modal-project-3" data-tags="Agentic AI · Travel platform" data-short="Wanderwise">
       <header class="cs-hero">
         <h3 id="modalTitle">Wanderwise</h3>
         <div class="cs-stats">
@@ -222,10 +235,9 @@ The problems I find most exciting are the ones without a playbook yet — new te
       <div class="cs-layout">
         <div class="cs-text">
           <p>
-            AI trip planners fall apart on the details: budgets that don't add up, hotels that don't exist, days that are double-booked.
-            Language models are great at understanding what people want, but they can't guarantee what has to be correct.
-            I designed and built Wanderwise, a trip-planning concierge that draws that line on purpose: four narrowly scoped agents interpret requests, rank activities, explain recommendations, and write the itinerary, while tested, deterministic code owns budget math, feasibility, inventory, and every change to the trip.
-            I took it from product brief to live app in a week and measured it with scenario-based evals and cost and latency telemetry.
+            AI trip planners fall apart on the details: budgets that don't add up, hotels that don't exist, double-booked days.
+            I designed and built Wanderwise to draw a clear line: four narrowly scoped agents handle judgment, like interpreting requests and writing the itinerary, while tested code owns budget math, feasibility, inventory, and every change to the trip.
+            I took it from brief to live app in a week.
           </p>
           <p>
             The key product call was deciding what the model should never do.
@@ -273,7 +285,7 @@ The problems I find most exciting are the ones without a playbook yet — new te
       <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close screenshot">&times;</button>
       <button type="button" class="lightbox-arrow" id="lightboxPrev" aria-label="Previous screenshot">‹</button>
       <figure class="lightbox-figure">
-        <img id="lightboxImg" src="" alt="">
+        <img id="lightboxImg" alt="">
         <figcaption id="lightboxCaption"></figcaption>
       </figure>
       <button type="button" class="lightbox-arrow" id="lightboxNext" aria-label="Next screenshot">›</button>
@@ -289,21 +301,21 @@ The problems I find most exciting are the ones without a playbook yet — new te
 
         <div class="personal-rows">
           <div class="personal-row reveal">
-            <img class="personal-photo" src="assets/tennis.jpg" alt="Playing tennis">
+            <img class="personal-photo" src="assets/tennis.jpg" alt="Playing tennis" loading="lazy">
             <div class="personal-copy">
               <h3>Tennis</h3>
               <p>Obsessed with watching, playing, and talking about tennis.</p>
             </div>
           </div>
           <div class="personal-row reveal">
-            <img class="personal-photo" src="assets/cooking.jpg" alt="Cooking in the kitchen">
+            <img class="personal-photo" src="assets/cooking.jpg" alt="Cooking in the kitchen" loading="lazy">
             <div class="personal-copy">
               <h3>Cooking</h3>
               <p>From learning my grandmother's recipes to making multicultural fusion food, I wind down in the kitchen.</p>
             </div>
           </div>
           <div class="personal-row reveal">
-            <img class="personal-photo" src="assets/mocha.jpg" alt="My dog Mocha">
+            <img class="personal-photo" src="assets/mocha.jpg" alt="My dog Mocha" loading="lazy">
             <div class="personal-copy">
               <h3>Mocha</h3>
               <p>Spending time with my dog, Mocha, is always a great way to stay present.</p>
@@ -322,11 +334,10 @@ The problems I find most exciting are the ones without a playbook yet — new te
           Open to new opportunities and
           interesting conversations. Reach out anytime.
         </p>
-        <!--<a class="contact-email" href="mailto:hello@example.com">hello@example.com</a>-->
-        <div class="social-row">
-          <a href="https://www.linkedin.com/in/rohan-pandit-bb2828a7" target="_blank" aria-label="LinkedIn">LinkedIn</a>
-          <a href="https://github.com/rohan-pandit" target="_blank" aria-label="GitHub">GitHub</a>
-		  <a href="mailto:rohan.pandit14@gmail.com" aria-label="Contact">Contact</a>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:rohan.pandit14@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/rohan-pandit-bb2828a7" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn btn-ghost" href="https://github.com/rohan-pandit" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
     </section>
@@ -339,6 +350,6 @@ The problems I find most exciting are the ones without a playbook yet — new te
     </div>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>
