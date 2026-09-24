@@ -232,6 +232,9 @@ a { color: inherit; }
   display: block;
   height: 100%;
   width: auto;
+  aspect-ratio: 1125 / 2436; /* one iPhone shape, so every phone frame is the same width */
+  object-fit: cover;
+  object-position: top;
   border-radius: 20px;
 }
 
@@ -486,6 +489,177 @@ a { color: inherit; }
   font-size: 0.78rem;
   color: var(--ink-soft);
   margin-top: 10px;
+}
+
+/* Lightbox: enlarged screenshot on top of the case study */
+.cs-shots img.is-zoomable { cursor: zoom-in; }
+.cs-shots img.is-zoomable:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 56px 24px 24px;
+  background: rgba(14, 13, 10, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox:focus { outline: none; }
+
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  max-height: 100%;
+}
+
+.lightbox-figure img {
+  display: block;
+  max-width: min(1200px, 100%);
+  max-height: calc(100vh - 120px);
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  background: var(--card-bg);
+}
+
+.lightbox-figure img.is-phone { border-radius: 24px; }
+
+.lightbox-figure figcaption {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #d9d5cc;
+}
+
+.lightbox-close,
+.lightbox-arrow {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover { background: rgba(255, 255, 255, 0.18); }
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+}
+
+.lightbox-arrow { width: 44px; height: 44px; font-size: 1.6rem; }
+.lightbox-arrow[hidden] { display: none; }
+
+/* Small screens: arrows sit below the image so they don't cover it */
+@media (max-width: 600px) {
+  .lightbox { flex-wrap: wrap; align-content: center; padding: 56px 16px 20px; gap: 12px 24px; }
+  .lightbox-figure { order: -1; flex: 0 0 100%; }
+  .lightbox-figure img { max-height: calc(100vh - 190px); }
+}
+
+/* Screenshot viewer (desktop only): one large shot, thumbnails to switch */
+.shot-nav,
+.shot-count { display: none; }
+
+@media (min-width: 901px) {
+  /* Title and text share the left column; the viewer spans the full height on the right */
+  .modal-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    column-gap: 48px;
+    align-items: start;
+  }
+  .cs-layout { display: contents; }
+  .cs-hero,
+  .cs-text { grid-column: 1; }
+  .cs-text { padding-top: 28px; }
+  .cs-shots { grid-column: 2; grid-row: 1 / span 2; }
+  .cs-shots.has-viewer { position: sticky; top: 0; gap: 14px; }
+  .cs-shots.has-viewer figure { display: none; }
+  .cs-shots.has-viewer figure.is-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 410px;
+  }
+  .cs-shots.has-viewer .device-phone { height: 380px; align-self: center; }
+
+  .shot-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shot-thumbs {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .shot-thumb {
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--device);
+    line-height: 0;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 0.15s ease, box-shadow 0.15s ease;
+  }
+  .shot-thumb img {
+    height: 52px;
+    width: auto;
+    aspect-ratio: 1125 / 2436;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 5px;
+  }
+  .shot-thumb.is-browser { background: var(--chrome); }
+  .shot-thumb.is-browser img { height: auto; width: 64px; aspect-ratio: auto; }
+  .shot-thumb:hover { opacity: 0.85; }
+  .shot-thumb[aria-current="true"] {
+    opacity: 1;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .shot-arrow {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--ink);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .shot-arrow:hover { border-color: var(--ink-soft); }
+
+  .shot-count {
+    display: block;
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
 }
 
 .shot-placeholder {

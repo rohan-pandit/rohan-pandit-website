@@ -83,7 +83,9 @@ function openModal(targetId, trigger) {
     hint.className = 'swipe-hint';
     hint.textContent = 'Swipe for more screenshots →';
     shots.after(hint);
+    buildShotViewer(shots);
   }
+  if (shots) makeShotsZoomable(shots);
 
   // "Next" cycles through the case studies in card order
   const nextId = projectIds[(projectIds.indexOf(targetId) + 1) % projectIds.length];
@@ -101,6 +103,125 @@ function openModal(targetId, trigger) {
   document.body.classList.add('modal-open');
   modalBox.focus();
 }
+
+// Desktop screenshot viewer: one large shot with thumbnails (CSS shows every shot on smaller screens)
+function buildShotViewer(shots) {
+  const figures = [...shots.querySelectorAll('figure')];
+  const nav = document.createElement('div');
+  nav.className = 'shot-nav';
+
+  const prev = document.createElement('button');
+  prev.type = 'button';
+  prev.className = 'shot-arrow';
+  prev.setAttribute('aria-label', 'Previous screenshot');
+  prev.textContent = '‹';
+
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'shot-arrow';
+  next.setAttribute('aria-label', 'Next screenshot');
+  next.textContent = '›';
+
+  const thumbs = document.createElement('div');
+  thumbs.className = 'shot-thumbs';
+
+  const counter = document.createElement('p');
+  counter.className = 'shot-count';
+
+  let current = 0;
+  const show = (index) => {
+    current = (index + figures.length) % figures.length;
+    figures.forEach((figure, i) => figure.classList.toggle('is-active', i === current));
+    [...thumbs.children].forEach((thumb, i) => thumb.setAttribute('aria-current', String(i === current)));
+    counter.textContent = `${current + 1} / ${figures.length}`;
+  };
+
+  figures.forEach((figure, i) => {
+    const img = figure.querySelector('img');
+    const caption = figure.querySelector('figcaption');
+    const thumb = document.createElement('button');
+    thumb.type = 'button';
+    thumb.className = figure.querySelector('.device-browser') ? 'shot-thumb is-browser' : 'shot-thumb';
+    thumb.setAttribute('aria-label', `Show screenshot ${i + 1}${caption ? `: ${caption.textContent}` : ''}`);
+    thumb.innerHTML = `<img src="${img.getAttribute('src')}" alt="">`;
+    thumb.addEventListener('click', () => show(i));
+    thumbs.appendChild(thumb);
+  });
+
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+  shots.showShot = (step) => show(current + step);
+
+  nav.append(prev, thumbs, next);
+  shots.append(nav, counter);
+  shots.classList.add('has-viewer');
+  show(0);
+}
+
+// Lightbox: click any case study screenshot to view it larger (all screen sizes)
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
+let lightboxShots = [];
+let lightboxIndex = 0;
+let lightboxTrigger = null;
+
+function makeShotsZoomable(shots) {
+  const figures = [...shots.querySelectorAll('figure')];
+  figures.forEach((figure, i) => {
+    const img = figure.querySelector('img');
+    const caption = figure.querySelector('figcaption');
+    img.classList.add('is-zoomable');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', `View larger: ${caption ? caption.textContent : img.alt}`);
+    const open = () => openLightbox(figures, i, img);
+    img.addEventListener('click', open);
+    img.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+function showLightboxShot(index) {
+  lightboxIndex = (index + lightboxShots.length) % lightboxShots.length;
+  const figure = lightboxShots[lightboxIndex];
+  const img = figure.querySelector('img');
+  const caption = figure.querySelector('figcaption');
+  lightboxImg.src = img.getAttribute('src');
+  lightboxImg.alt = img.alt;
+  lightboxImg.classList.toggle('is-phone', Boolean(figure.querySelector('.device-phone')));
+  const count = lightboxShots.length > 1 ? ` · ${lightboxIndex + 1} / ${lightboxShots.length}` : '';
+  lightboxCaption.textContent = `${caption ? caption.textContent : ''}${count}`;
+}
+
+function openLightbox(figures, index, trigger) {
+  lightboxShots = figures;
+  lightboxTrigger = trigger;
+  lightboxPrev.hidden = lightboxNext.hidden = figures.length < 2;
+  showLightboxShot(index);
+  lightbox.classList.add('is-open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  lightbox.focus();
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  if (lightboxTrigger) lightboxTrigger.focus();
+}
+
+lightboxPrev.addEventListener('click', () => showLightboxShot(lightboxIndex - 1));
+lightboxNext.addEventListener('click', () => showLightboxShot(lightboxIndex + 1));
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (event) => {
+  if (event.target === lightbox || event.target.classList.contains('lightbox-figure')) closeLightbox();
+});
 
 modalNext.addEventListener('click', () => {
   openModal(modalNext.dataset.target);
@@ -137,7 +258,21 @@ modalOverlay.addEventListener('click', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && modalOverlay.classList.contains('is-open')) {
-    closeModal();
+  // The lightbox sits on top of the modal, so it gets keys first
+  if (lightbox.classList.contains('is-open')) {
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') showLightboxShot(lightboxIndex - 1);
+    if (event.key === 'ArrowRight') showLightboxShot(lightboxIndex + 1);
+    return;
+  }
+
+  if (!modalOverlay.classList.contains('is-open')) return;
+  if (event.key === 'Escape') closeModal();
+
+  // Arrow keys step through screenshots when the desktop viewer is showing
+  const shots = modalContent.querySelector('.cs-shots.has-viewer');
+  if (shots && window.matchMedia('(min-width: 901px)').matches &&
+      (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+    shots.showShot(event.key === 'ArrowRight' ? 1 : -1);
   }
 });
