@@ -201,6 +201,9 @@ function openLightbox(figures, index, trigger) {
   lightboxTrigger = trigger;
   lightboxPrev.hidden = lightboxNext.hidden = figures.length < 2;
   showLightboxShot(index);
+  // Stays hidden in the HTML so it never shows up unstyled; reveal it, then fade in
+  lightbox.hidden = false;
+  void lightbox.offsetWidth;
   lightbox.classList.add('is-open');
   lightbox.setAttribute('aria-hidden', 'false');
   lightbox.focus();
@@ -209,6 +212,9 @@ function openLightbox(figures, index, trigger) {
 function closeLightbox() {
   lightbox.classList.remove('is-open');
   lightbox.setAttribute('aria-hidden', 'true');
+  setTimeout(() => {
+    if (!lightbox.classList.contains('is-open')) lightbox.hidden = true;
+  }, 250);
   if (lightboxTrigger) lightboxTrigger.focus();
 }
 

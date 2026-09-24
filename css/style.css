@@ -510,6 +510,7 @@ a { color: inherit; }
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
+.lightbox[hidden] { display: none; }
 .lightbox.is-open { opacity: 1; visibility: visible; }
 .lightbox:focus { outline: none; }
 
