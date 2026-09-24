@@ -585,6 +585,7 @@ a { color: inherit; }
   .modal-content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-rows: auto 1fr; /* extra height from the viewer goes below the text, not under the title */
     column-gap: 48px;
     align-items: start;
   }

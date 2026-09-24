@@ -138,11 +138,10 @@ function buildShotViewer(shots) {
 
   figures.forEach((figure, i) => {
     const img = figure.querySelector('img');
-    const caption = figure.querySelector('figcaption');
     const thumb = document.createElement('button');
     thumb.type = 'button';
     thumb.className = figure.querySelector('.device-browser') ? 'shot-thumb is-browser' : 'shot-thumb';
-    thumb.setAttribute('aria-label', `Show screenshot ${i + 1}${caption ? `: ${caption.textContent}` : ''}`);
+    thumb.setAttribute('aria-label', `Show screenshot ${i + 1}: ${img.alt}`);
     thumb.innerHTML = `<img src="${img.getAttribute('src')}" alt="">`;
     thumb.addEventListener('click', () => show(i));
     thumbs.appendChild(thumb);
@@ -172,11 +171,10 @@ function makeShotsZoomable(shots) {
   const figures = [...shots.querySelectorAll('figure')];
   figures.forEach((figure, i) => {
     const img = figure.querySelector('img');
-    const caption = figure.querySelector('figcaption');
     img.classList.add('is-zoomable');
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
-    img.setAttribute('aria-label', `View larger: ${caption ? caption.textContent : img.alt}`);
+    img.setAttribute('aria-label', `View larger: ${img.alt}`);
     const open = () => openLightbox(figures, i, img);
     img.addEventListener('click', open);
     img.addEventListener('keydown', (event) => {
@@ -192,12 +190,10 @@ function showLightboxShot(index) {
   lightboxIndex = (index + lightboxShots.length) % lightboxShots.length;
   const figure = lightboxShots[lightboxIndex];
   const img = figure.querySelector('img');
-  const caption = figure.querySelector('figcaption');
   lightboxImg.src = img.getAttribute('src');
   lightboxImg.alt = img.alt;
   lightboxImg.classList.toggle('is-phone', Boolean(figure.querySelector('.device-phone')));
-  const count = lightboxShots.length > 1 ? ` · ${lightboxIndex + 1} / ${lightboxShots.length}` : '';
-  lightboxCaption.textContent = `${caption ? caption.textContent : ''}${count}`;
+  lightboxCaption.textContent = lightboxShots.length > 1 ? `${lightboxIndex + 1} / ${lightboxShots.length}` : '';
 }
 
 function openLightbox(figures, index, trigger) {
