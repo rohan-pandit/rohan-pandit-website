@@ -19,9 +19,28 @@
   --thumb-soft: linear-gradient(160deg, #efeef8, #e1dff3);
 }
 
-/* Graphite + lighter violet, the dark counterpart */
+/* Graphite + lighter violet, the dark counterpart. Applies when the visitor
+   picks dark with the header toggle, or when their device prefers dark and they
+   haven't picked light. The two blocks must stay identical. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111214;
+  --bg-alt: #17181b;
+  --ink: #ededee;
+  --ink-soft: #a1a1aa;
+  --accent: #8f84f5;
+  --accent-ink: #111214;
+  --border: #2b2c31;
+  --card-bg: #1d1e22;
+  --shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.7);
+  --device: #050506;
+  --chrome: #2a2b30;
+  --thumb-soft: linear-gradient(160deg, #2a2940, #1f1e2e);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --bg: #111214;
     --bg-alt: #17181b;
     --ink: #ededee;
@@ -129,6 +148,34 @@ a { color: inherit; }
   color: var(--ink);
   border-color: var(--accent);
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Light/dark toggle: shows the moon in light mode and the sun in dark mode */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle.is-dark .icon-sun { display: block; }
+.theme-toggle.is-dark .icon-moon { display: none; }
 
 .nav-toggle {
   display: none;
@@ -910,6 +957,8 @@ body.modal-open { overflow: hidden; }
   .specialty-tags { justify-content: center; }
 
   .nav-toggle { display: flex; }
+  .nav { gap: 16px; }
+  .theme-toggle { order: -1; } /* sits left of the menu button */
 
   .nav-links {
     position: absolute;

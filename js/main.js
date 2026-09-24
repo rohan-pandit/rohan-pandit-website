@@ -1,6 +1,31 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Light/dark toggle. With no saved choice the site follows the device setting;
+// the saved choice itself is applied by the inline script in <head>.
+const themeToggle = document.getElementById('themeToggle');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function currentTheme() {
+  return document.documentElement.dataset.theme || (prefersDark.matches ? 'dark' : 'light');
+}
+
+function syncThemeToggle() {
+  const isDark = currentTheme() === 'dark';
+  themeToggle.classList.toggle('is-dark', isDark);
+  themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+themeToggle.addEventListener('click', () => {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('theme', next); } catch (e) {}
+  syncThemeToggle();
+});
+
+prefersDark.addEventListener('change', syncThemeToggle);
+syncThemeToggle();
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
