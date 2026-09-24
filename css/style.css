@@ -441,6 +441,17 @@ a { color: inherit; }
   max-width: 600px;
 }
 
+.cs-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 20px;
+}
+
+.cs-cta .btn { padding: 10px 20px; font-size: 0.9rem; }
+.cs-cta span { font-size: 0.8rem; color: var(--ink-soft); }
+
 .cs-stats div {
   border: 1px solid var(--border);
   border-radius: 10px;

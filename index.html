@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -90,7 +90,7 @@ The problems I find most exciting are the ones without a playbook yet — new te
             <div class="project-body">
               <h3>Stacked benefits experience</h3>
               <p class="project-tags">Benefits · Platform modernization</p>
-              <p>~42% of users left money unspent. Consolidated platforms and unlocked a new channel: 3 clients, $1.5M AUM.</p>
+              <p>One modernized platform behind a new benefits experience, with smart spend-down that weighs your accounts, expiring funds, and each expense so you don't have to.</p>
               <button type="button" class="project-link" data-modal-target="project-1">View case study →</button>
             </div>
           </article>
@@ -102,7 +102,7 @@ The problems I find most exciting are the ones without a playbook yet — new te
             <div class="project-body">
               <h3>Shop</h3>
               <p class="project-tags">Ecommerce · Utilization · Engagement</p>
-              <p>Amazon + Walmart fulfillment for OTC and food benefits. +20% utilization, 10M users.</p>
+              <p>A new online shop that helps members maximize their supplemental benefits, like OTC and healthy food, on eligible products fulfilled by Amazon or Walmart.</p>
               <button type="button" class="project-link" data-modal-target="project-2">View case study →</button>
             </div>
           </article>
@@ -205,18 +205,34 @@ The problems I find most exciting are the ones without a playbook yet — new te
     <template id="modal-project-3" data-tags="Agentic AI · Travel Platform" data-short="Wanderwise">
       <header class="cs-hero">
         <h3 id="modalTitle">Wanderwise</h3>
+        <div class="cs-stats">
+          <div><strong>45.5%</strong><span>lower AI cost</span></div>
+          <div><strong>4</strong><span>AI agents</span></div>
+          <div><strong>36/36</strong><span>evals passed<br>4 guardrail layers</span></div>
+        </div>
+        <div class="cs-cta">
+          <a class="btn btn-primary" href="https://wanderwise-trips.vercel.app" target="_blank" rel="noopener">Try Wanderwise ↗</a>
+          <span>Live flight search · sample hotels and activities · nothing is booked</span>
+        </div>
       </header>
       <div class="cs-layout">
         <div class="cs-text">
           <p>
-            Placeholder overview — what the project was, who it was for, and what problem
-            it solved. Two or three sentences is plenty.
+            AI trip planners fall apart on the details: budgets that don't add up, hotels that don't exist, days that are double-booked.
+            Language models are great at understanding what people want, but they can't guarantee what has to be correct.
+            I designed and built Wanderwise, a trip-planning concierge that draws that line on purpose: four narrowly scoped agents interpret requests, rank activities, explain recommendations, and write the itinerary, while tested, deterministic code owns budget math, feasibility, inventory, and every change to the trip.
+            I took it from product brief to live app in a week and measured it with scenario-based evals and cost and latency telemetry.
           </p>
-          <p>Placeholder detail on your role and approach. What you built and why.</p>
+          <p>
+            The key product call was deciding what the model should never do.
+            Every flight, hotel, and activity an agent suggests is checked against real search results before it's saved, so it can't invent inventory.
+            When one-shot itinerary generation couldn't handle "swap the hotel" or "make it cheaper," I redesigned it into a step-by-step flow where each piece is proposed and confirmed on its own.
+          </p>
           <ul class="check-list">
-            <li>Placeholder outcome or result, ideally with a number.</li>
-            <li>Placeholder — a second concrete result or learning.</li>
-            <li>Placeholder — tools, scale, or timeline detail.</li>
+            <li>Cut AI cost 45.5% with prompt caching, and measured no significant increase in response time.</li>
+            <li>36 evals run against the real AI and database, not mocks, including attacks like invented flight IDs and a planted prompt injection. They caught over-budget trips slipping through, which I fixed with an explicit override step.</li>
+            <li>4 guardrail layers: input and scope checks, validation of every AI output, business rules like budget and dates, and workflow permissions.</li>
+            <li>Integrated live flight search through a third-party API (SerpAPI), alongside Next.js, Supabase with pgvector, Claude, and Voyage embeddings, with separate dashboards for AI cost and product metrics.</li>
           </ul>
         </div>
         <aside class="cs-shots" aria-label="Screenshots">
@@ -319,6 +335,6 @@ The problems I find most exciting are the ones without a playbook yet — new te
     </div>
   </footer>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>
