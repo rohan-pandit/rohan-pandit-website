@@ -225,6 +225,24 @@ lightbox.addEventListener('click', (event) => {
   if (event.target === lightbox || event.target.classList.contains('lightbox-figure')) closeLightbox();
 });
 
+// Swipe left/right to change screenshots on touch screens
+let swipeStart = null;
+lightbox.addEventListener('touchstart', (event) => {
+  swipeStart = event.touches.length === 1
+    ? { x: event.touches[0].clientX, y: event.touches[0].clientY }
+    : null;
+}, { passive: true });
+lightbox.addEventListener('touchend', (event) => {
+  if (!swipeStart || lightboxShots.length < 2) return;
+  const dx = event.changedTouches[0].clientX - swipeStart.x;
+  const dy = event.changedTouches[0].clientY - swipeStart.y;
+  swipeStart = null;
+  // Mostly-horizontal swipes only, so vertical drags and taps are ignored
+  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    showLightboxShot(lightboxIndex + (dx < 0 ? 1 : -1));
+  }
+}, { passive: true });
+
 modalNext.addEventListener('click', () => {
   openModal(modalNext.dataset.target);
 });
